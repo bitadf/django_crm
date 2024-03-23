@@ -1,8 +1,9 @@
 {% extends 'base.html' %}
 {% block content %}
 <div class="col-md-6 offser-md-3">
+<br/>
 <h1>register</h1>
-<form method="POST" action="">
+<form method="POST" action="{% url 'register' %}">
     {% csrf_token %}  
     {% if form.errors %}
         <div class="alert alert-warning
@@ -19,7 +20,6 @@
         </div>
     {% endif %}
     {{ form.as_p}}
-
     <br/>
     <button type="submit" class="btn btn-secondary">register</button>
     </form>

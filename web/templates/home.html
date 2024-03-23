@@ -1,14 +1,14 @@
 {% extends 'base.html'%}
 
 {% block content %}
-<div class="col-md-6 offser-md-3">
+<div class="col-md-6 offset-md-3">
 
     {% if user.is_authenticated %}
        <h1>Records</h1>
     {% if records %}
-    <table class="table table-primary">
+    <table class="table table-success ">
       <thead>
-        <tr class="table-primary">
+        <tr class="table-secondary" >
           <th scope="col">id</th>
           <th scope="col">First Name</th>
           <th scope="col">Last Name</th>
@@ -18,9 +18,10 @@
       </thead>
         {% for record in records%}
       <tbody>
-        <tr class="table-primary table-hover">
-          <th scope="row"><a href = "{% url 'record' record.id %}">{{record.id}}</a></th>
-                        <td >{{record.first_name}}</td>
+        <tr class="table-secondary table-hover">
+          <th scope="row">  
+          <a href = "{% url 'record' record.id %}" style="color: #4DD4AC;">{{record.id}}</a></th>
+          <td >{{record.first_name}}</td>
           <td>{{record.last_name}}</td>
           <td>{{record.email}}</td>
           <td>{{record.phone}}</td>
@@ -31,6 +32,7 @@
        
     {% endif%}
     {% else %}
+    <br/>
 <h1>Login</h1>
 <form method="POST" action="{% url 'home' %}">
     {% csrf_token %}    
@@ -42,7 +44,7 @@
         <div class="form-group">
         
           <input type="password" class="form-control"
-          name="password" , placeholder="password" required>
+          name="password" , placeholder="Password" required>
         </div>
 
         <button type="submit" class="btn btn-secondary">Login</button>
